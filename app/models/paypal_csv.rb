@@ -14,7 +14,7 @@ class PaypalCsv < ActiveRecord::Base
   end
 
   def self.batch_import_from_csv(filename)
-    csv = CSV.table(filename)
+    csv = CSV.table(filename, {:col_sep => "\t"})
     csv.each do |row| 
       paypal_csv = PaypalCsv.new()
 logger.fatal row.inspect
